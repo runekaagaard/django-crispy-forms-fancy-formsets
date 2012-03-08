@@ -1,0 +1,15 @@
+table.fancy-formsets-table input, table.fancy-formsets-table textarea, 
+table.fancy-formsets-table select, 
+table.fancy-formsets-table .uneditable-input,
+table.fancy-formsets-table .help-inline {
+	margin-bottom: 0px;	
+}
+
+table.fancy-formsets-table tr td {
+	padding-top: 6px;
+	padding-bottom: 6px;
+}
+
+table.fancy-formsets-table .hidden {
+	display: none;
+}

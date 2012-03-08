@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Test application for django-crispy-forms-fancy-formsets</title>
+
+    <!-- Le styles -->
+    <link href="{{ STATIC_URL }}/test_app/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}/test_app/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}/fancy_formsets/fancy_formsets.css" rel="stylesheet">
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  </head>
+
+  <body data-spy="scroll" data-target=".subnav" data-offset="50">
+
+
+  <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="./index.html">Fancy formsets</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+<!-- Masthead
+================================================== -->
+
+<div class="marketing">
+  <h1>Fancy Formsets, Now!</h1>
+  <p class="marketing-byline">Dynamic inline formsets, build on top of
+  	crispy-forms.</p>
+  
+  <div class="row">
+    <div class="span12">
+      	{% load crispy_forms_tags %}
+		{% include "fancy_formsets_bootstrap/formsets.html" %}
+  	</div>
+  </div><!--/row-->
+</div><!-- /.marketing -->
+
+      <!-- Footer
+      ================================================== -->
+      <footer class="footer">
+        <p>
+        	Build by <a href="https://github.com/runekaagaard">Rune Kaagard</a>
+        </p>
+      </footer>
+
+    </div><!-- /container -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="{{ STATIC_URL }}/test_app/bootstrap/js/bootstrap.js"></script>
+    <script src="{{ STATIC_URL }}/fancy_formsets/fancy_formsets.js"></script>
+
+  </body>
+</html>
