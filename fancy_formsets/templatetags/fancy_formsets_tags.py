@@ -9,12 +9,14 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.templatetags.crispy_forms_tags import BasicNode
 
 from fancy_formsets.widgets import ReadOnlyWidget
+from django.template.base import Variable
 
 register = template.Library()
        
 class FancyFormsetsNode(BasicNode):
     def render(self, context):
-        template = get_template('fancy_formsets_bootstrap/formset.html')  
+        helper = self.helper.resolve(context)
+        template = get_template(helper.template_name)  
         c = self.get_render(context)
         return template.render(c)
 
@@ -41,7 +43,14 @@ class ReadonlyFieldNode(template.Node):
         bound_field = context[self.field_name]
         if bound_field.name == DELETION_FIELD_NAME: 
             return ""
-        bound_field.field.widget = ReadOnlyWidget()
+        # If the widget implements the render_readonly() method, use that 
+        # instead of the render() method.
+        if hasattr(bound_field.field.widget, "render_readonly"):
+            bound_field.field.widget.render = \
+                bound_field.field.widget.render_readonly
+        else:
+            bound_field.field.widget = ReadOnlyWidget()
+            
         try: bound_field.field.widget.queryset = bound_field.field.queryset
         except AttributeError: pass
         

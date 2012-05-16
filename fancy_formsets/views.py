@@ -1,4 +1,4 @@
-# coding=utf8
+# coding=utf-8
 from django.http import HttpResponseRedirect
 from django.views.generic.base import TemplateView
 from django.core.urlresolvers import reverse
@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.forms.formsets import DELETION_FIELD_NAME
 
 from crispy_forms.layout import Submit
-from fancy_formsets.helper import InlineFormHelper
+from fancy_formsets.helper import InlineFormHelper, InlineFormsetHelper
 
 
 class FormsetsView(TemplateView):
@@ -16,12 +16,16 @@ class FormsetsView(TemplateView):
     message_on_save = _("The changes was succesfully saved.")
     readonly = False
     
+    def is_valid(self, context):
+        return not any(map(lambda x: not x.is_valid(), context['formsets']))
+    
     def post(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)
-        if (not any(map(lambda x: not x.is_valid(), context['formsets']))):
+        if (self.is_valid(context)):
             map(lambda x: x.save(), context['formsets'])
             messages.add_message(request, messages.SUCCESS, 
                                  self.message_on_save)
+            
             return HttpResponseRedirect("")
         
         return self.render_to_response(context)
@@ -37,6 +41,9 @@ class FormsetsView(TemplateView):
             formset.readonly = self.readonly
             if not hasattr(formset.form, "helper"):
                 formset.form.helper = InlineFormHelper()
+            if not hasattr(formset, "helper"):
+                formset.helper = InlineFormsetHelper()
+                
             for form in formset.forms:
                 matrix = (form in formset.extra_forms, form.is_bound, 
                           DELETION_FIELD_NAME in form.changed_data)

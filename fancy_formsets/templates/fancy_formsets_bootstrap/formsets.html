@@ -4,7 +4,7 @@
 	{% csrf_token %}
 
 	{% for formset in formsets %}
-		{% fancy_formsets formset %}
+		{% fancy_formsets formset formset.helper %}
 	{% endfor %}
 	
 	{% if formsets_inputs %}

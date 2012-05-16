@@ -1,0 +1,44 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-05-16 12:04+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Rune Kaagaard <rumi.kg@gmail.com>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: views.py:15
+msgid "Save changes"
+msgstr "Gem ændringer"
+
+#: views.py:16
+msgid "The changes was succesfully saved."
+msgstr "Dine ændringer er nu gemt."
+
+#: templates/fancy_formsets_bootstrap/field.html:21
+#: templates/fancy_formsets_bootstrap/formset.html:49
+msgid "Delete"
+msgstr "Slet"
+
+#: templates/fancy_formsets_bootstrap/formset.html:10
+#, python-format
+msgid ""
+"\n"
+"\t    \t\tAny %(name)s has yet to be added.\n"
+"\t    \t"
+msgstr
+"\n"
+"\t    \t\tDer er endnu ikke tilføjet nogen %(name)s.\n"
+"\t    \t"
+
+#: templates/fancy_formsets_bootstrap/tfoot.html:7
+msgid "Add"
+msgstr "Tilføj"
+
+#: templates/fancy_formsets_bootstrap/tfoot.html:10
+msgid "Save the page to get more rows."
+msgstr "Gem siden for at få flere rækker."
