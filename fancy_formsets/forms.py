@@ -1,6 +1,5 @@
 from django.forms.models import BaseInlineFormSet
 from fancy_formsets.helper import InlineFormHelper, InlineFormsetHelper
-from crispy_forms.templatetags.crispy_forms_tags import UniFormNode
 from django.template.loader import get_template
 from django.template.context import Context
 from django.utils.html import escape

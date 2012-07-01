@@ -15,8 +15,18 @@ register = template.Library()
        
 class FancyFormsetsNode(BasicNode):
     def render(self, context):
-        helper = self.helper.resolve(context)
-        template = get_template(helper.template_name)  
+        if self not in context.render_context:
+            context.render_context[self] = (
+                Variable(self.form),
+                Variable(self.helper) if self.helper else None
+            )
+        form, helper = context.render_context[self]
+        actual_form = form.resolve(context)
+        if self.helper is not None:
+            helper = helper.resolve(context)
+        else:
+            helper = actual_form.helper
+        template = get_template(helper.template_name)
         c = self.get_render(context)
         return template.render(c)
 
