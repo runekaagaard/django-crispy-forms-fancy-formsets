@@ -5,10 +5,11 @@ from django.template.context import Context
 from django.utils.html import escape
 from django.forms.formsets import DELETION_FIELD_NAME
 
+
 class FancyBaseInlineFormSet(BaseInlineFormSet):
     helper = None
     empty_form = None
-    
+
     def __init__(self, *args, **kwargs):
         if not self.helper:
             self.helper = InlineFormsetHelper()
@@ -24,8 +25,9 @@ class FancyBaseInlineFormSet(BaseInlineFormSet):
                     form.fields[DELETION_FIELD_NAME].initial = True
             else:
                 form.is_extra = False
-        
-    template = get_template("fancy_formsets_bootstrap/form.html")    
+
+    template = get_template("fancy_formsets_bootstrap/form.html")
+
     def render_empty_form(self):
         self.empty_form.helper = InlineFormHelper()
         return escape(self.template.render(Context({"form": self.empty_form})))
