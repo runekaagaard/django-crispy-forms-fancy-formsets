@@ -1,9 +1,9 @@
 {% load fancy_formsets_tags %}
 
 {% if not field.is_hidden %}
-	<td id="div_{{ field.auto_id }}" 
-		class="clearfix control-group{% if form_show_errors%}{% if field.errors %} error{% endif %}{% endif %}{% if field.css_classes %} {{ field.css_classes }}{% endif %} {{field.name}}"
-	>
-        {% fancy_formsets_field_readonly field %}
-	</td>
+<td id="div_{{ field.auto_id }}"
+  class="clearfix control-group{% if form_show_errors%}{% if field.errors %} error{% endif %}{% endif %}{% if field.css_classes %} {{ field.css_classes }}{% endif %} {{field.name}}"
+  >
+  {% fancy_formsets_field_readonly field %}
+</td>
 {% endif %}
