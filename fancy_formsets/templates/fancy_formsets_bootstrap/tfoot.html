@@ -1,14 +1,14 @@
 {% load i18n %}
 
 {% if not formset.readonly %}
-	<tr>
-		<td colspan="{{formset.empty_form.visible_fields|length}}">
-			<a href="#" class="btn fancy-formsets-add-row">
-				{% trans "Add" %} {{formset.verbose_name|lower}}
-			</a>
-			<span class="hidden fancy-formsets-no-more-rows">
-				{% trans "Save the page to get more rows." %}
-			</span>
-		</td>
-	</tr>
+<tr>
+  <td colspan="{{formset.empty_form.visible_fields|length}}">
+    <a href="#" class="btn fancy-formsets-add-row">
+      {% trans "Add" %} {{formset.verbose_name|lower}}
+    </a>
+    <span class="hidden fancy-formsets-no-more-rows">
+      {% trans "Save the page to get more rows." %}
+    </span>
+  </td>
+</tr>
 {% endif %}

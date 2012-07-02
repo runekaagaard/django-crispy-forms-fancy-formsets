@@ -2,43 +2,44 @@
 {% load crispy_forms_field %}
 
 {% if field.is_hidden %}
-	{{ field }}
+  {{ field }}
 {% else %}
-	<td id="div_{{ field.auto_id }}" class="clearfix control-group{% if form_show_errors%}{% if field.errors and not form.is_extra %} error{% endif %}{% endif %}{% if field.css_classes %} {{ field.css_classes }}{% endif %} {{field.name}}">
-        {% if field|css_class == "checkboxselectmultiple" %}
-            {% include 'bootstrap/layout/checkboxselectmultiple.html' %}
-        {% endif %} 
+  <td id="div_{{ field.auto_id }}" class="clearfix control-group{% if form_show_errors%}{% if field.errors and not form.is_extra %} error{% endif %}{% endif %}{% if field.css_classes %} {{ field.css_classes }}{% endif %} {{field.name}}">
+    {% if field|css_class == "checkboxselectmultiple" %}
+      {% include 'bootstrap/layout/checkboxselectmultiple.html' %}
+    {% endif %}
 
-        {% if field|css_class == "radioselect" %}
-            {% include 'bootstrap/layout/radioselect.html' %}
-        {% endif %}
+    {% if field|css_class == "radioselect" %}
+      {% include 'bootstrap/layout/radioselect.html' %}
+    {% endif %}
 
-        {% if field|css_class != "checkboxselectmultiple" and field|css_class != "radioselect" %}
-            <div class="controls">
-            	{% if field.name == "DELETE" %}
-            		<span class="fancy-formsets-delete">
-            			<a href="#" class="btn btn-danger">
-            				{% trans "Delete"%}
-            			</a>
-            			<span class="hidden">
-            	{% endif %}
-            	
-                {% if field|is_checkbox %}
-                    {% crispy_field field %}
-                    {{ field.label|safe }}
-                {% else %}
-                    {% crispy_field field %}
-                {% endif %}
-				
-				{% if not form.is_extra %}                
-                	{% include 'bootstrap/layout/help_text_and_errors.html' %}
-                {% endif %}
-                
-                {% if field.name == "DELETE" %}
-            		</span></span>
-            	{% endif %}
-            	
-            </div>
-        {% endif %}
-	</td>
+    {% if field|css_class != "checkboxselectmultiple" and field|css_class != "radioselect" %}
+    <div class="controls">
+      {% if field.name == "DELETE" %}
+      <span class="fancy-formsets-delete">
+        <a href="#" class="btn btn-danger">
+          {% trans "Delete"%}
+        </a>
+        <span class="hidden">
+          {% endif %}
+
+          {% if field|is_checkbox %}
+            {% crispy_field field %}
+            {{ field.label|safe }}
+          {% else %}
+            {% crispy_field field %}
+          {% endif %}
+
+          {% if not form.is_extra %}
+            {% include 'bootstrap/layout/help_text_and_errors.html' %}
+          {% endif %}
+
+      {% if field.name == "DELETE" %}
+        </span>
+      </span>
+      {% endif %}
+
+    </div>
+    {% endif %}
+  </td>
 {% endif %}
