@@ -1,2 +1,4 @@
 *.pyc
 *~
+/django_crispy_forms_fancy_formsets.egg-info
+/dist
